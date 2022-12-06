@@ -6,30 +6,33 @@ print(titulos_peliculas.head()) #head() devuelve los 5 primeros registros del da
 
 # Cargar como dataframe de pandas el csv imdb_elenco.csv y mostrar sus 5 primeros registros
 elenco = pd.read_csv('imdb_elenco.csv')
-print(elenco.head()) #head() devuelve los 5 primeros registros del dataframe
+print(elenco.head()) #head() devuelve los 5 primeros registros del dataframe por defecto pero es modificable mediante el parámetro "n"
 
 #Mostrar el número de registros del dataframe de titulos
-print("Mostrar el número de registros del dataframe de titulos: " ,len(titulos_peliculas), "\n") #len() devuelve el número de registros del dataframe.
+print("Mostrar el número de registros del dataframe de titulos: ", "\n", len(titulos_peliculas)) #len() devuelve el número de registros del dataframe.
 
 
 #Mostrar el número de registros del dataframe de elenco
-print("Mostrar el número de registros del dataframe de elenco: ",len(elenco), "\n") # len() devuelve el número de registros del dataframe.
-
+print("Mostrar el número de registros del dataframe de elenco: ", "\n", len(elenco)) #len() devuelve el número de registros del dataframe.
 
 
 #Mostrar las 5 peliculas más antiguas del listado de titulos
-print("Mostrar las 5 peliculas más antiguas del listado de titulos", "\n",titulos_peliculas.sort_values(by='year').head(), "\n") #sort_values() ordena los registros del dataframe por el valor de la columna indicada en el parámetro "by"
+print("Mostrar las 5 peliculas más antiguas del listado de titulos", "\n")
+print(titulos_peliculas.sort_values(by='year').head()) #sort_values() ordena los registros del dataframe por el valor de la columna indicada en el parámetro "by"
 
 #Mostrar las peliculas que en el titulo tienen la palabra "Dracula". También mostrar el número total de peliculas que coincidan con este requisito
-print("Mostrar las peliculas que en el titulo tienen la palabra Dracula","\n",titulos_peliculas[titulos_peliculas['title'].str.contains('Dracula')],"\n")  #str.contains() devuelve la subcadena indicada en el parámetro
+print("Mostrar las peliculas que en el titulo tienen la palabra Dracula")
+print(titulos_peliculas[titulos_peliculas['title'].str.contains('Dracula')])  #str.contains() devuelve la subcadena indicada en el parámetro
 print("Número de peliculas que coincidan con este requisito: ",len(titulos_peliculas[titulos_peliculas['title'].str.contains('Dracula')]), "\n")
 
 #Mostrar los 10 titulos más comunes (que más se repiten)
-print("Mostrar los 10 titulos más comunes", "\n", titulos_peliculas['title'].value_counts().head(10), "\n") #value_counts() devuelve un dataframe con los valores de la columna indicada en el parámetro y la cantidad de veces que se repite cada uno
+print("Mostrar los 10 titulos más comunes")
+print(titulos_peliculas['title'].value_counts().head(10)) #value_counts() devuelve un dataframe con los valores de la columna indicada en el parámetro y la cantidad de veces que se repite cada uno
 
 
 #Mostrar cual fue la primer pelicula hecha titulada "Romeo and Juliet"
-print("Mostrar cual fue la primer pelicula hecha titulada 'Romeo and Juliet'","\n",titulos_peliculas[titulos_peliculas['title'] == 'Romeo and Juliet'].sort_values(by='year').head(1),"\n") #sort_values() ordena los registros del dataframe por el valor de la columna indicada en el parámetro "by"
+print("Mostrar cual fue la primer pelicula hecha titulada 'Romeo and Juliet'")
+print(titulos_peliculas[titulos_peliculas['title'] == 'Romeo and Juliet'].sort_values(by='year').head(1)) #sort_values() ordena los registros del dataframe por el valor de la columna indicada en el parámetro "by"
 
 #Listar todas las peliculas que contengan la palabra "Exorcist" ordenadas de la más vieja a la más reciente
 print("Listar todas las peliculas que contengan la palabra 'Exorcist' ordenadas de la más vieja a la más reciente","\n",titulos_peliculas[titulos_peliculas['title'].str.contains('Exorcist')].sort_values(by='year')) #sort_values() ordena los registros del dataframe por el valor de la columna indicada en el parámetro "by"
